@@ -59,7 +59,7 @@ def make_get_up_message(number_toady):
     return body #, is_get_up_early
 
 
-def main(github_token, repo_name, weather_message, tele_token, tele_chat_id):
+def main(github_token, repo_name):
     u = login(github_token)
     repo = u.get_repo(repo_name)
     issue = repo.get_issue(GET_UP_ISSUE_NUMBER)
