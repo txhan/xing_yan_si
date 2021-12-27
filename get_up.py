@@ -35,15 +35,15 @@ def get_today_get_up_status(issue):
     if not comments:
         return False
     latest_comment = comments[-1]
-    number_today = 1
+    number_today = 0
     now = pendulum.now(TIMEZONE)
     latest_day = pendulum.instance(latest_comment.created_at).in_timezone(
         "Asia/Shanghai"
     )
     while((latest_day.day == now.day) and (latest_day.month == now.month)):
-        number_today = number_today +1
         if number_today == len(comments)-2:
             break
+        number_today = number_today +1
         latest_comment = comments[-number_today]
         latest_day = pendulum.instance(latest_comment.created_at).in_timezone(
         "Asia/Shanghai"
