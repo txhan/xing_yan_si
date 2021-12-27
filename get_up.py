@@ -55,7 +55,8 @@ def make_get_up_message(number_toady):
     # 3 - 7 means early for me
    # is_get_up_early = 6 <= now.hour <= 18    
     get_up_time = now.to_datetime_string()
-    body = GET_UP_MESSAGE_TEMPLATE.format(get_up_time=get_up_time, number_toady=number_toady*25) #, sentence=sentence)
+    number_toady_str = str(number_toady * 25) + 'min'
+    body = GET_UP_MESSAGE_TEMPLATE.format(get_up_time=get_up_time, number_toady=number_toady_str) #, sentence=sentence)
     return body #, is_get_up_early
 
 
