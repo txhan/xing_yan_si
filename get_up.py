@@ -41,7 +41,7 @@ def get_today_get_up_status(issue):
         "Asia/Shanghai"
     )
     while((latest_day.day == now.day) and (latest_day.month == now.month)):
-        if number_today == len(comments)-2:
+        if number_today >= len(comments)-2:
             break
         number_today = number_today +1
         latest_comment = comments[-number_today]
