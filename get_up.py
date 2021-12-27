@@ -42,7 +42,7 @@ def get_today_get_up_status(issue):
     )
     while((latest_day.day == now.day) and (latest_day.month == now.month)):
         number_today = number_today +1
-        if number_today == length(comments):
+        if number_today == len(comments):
             break
         latest_comment = comments[-number_today]
         latest_day = pendulum.instance(latest_comment.created_at).in_timezone(
