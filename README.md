@@ -1,3 +1,6 @@
+from https://github.com/phh95/get_up
+
+
 # get_up 
 
 快捷指令 App 配合 GitHub Actions 自动记录起床时间   
