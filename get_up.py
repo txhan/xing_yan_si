@@ -8,7 +8,7 @@ from github import Github
 # 14 for test 12 real get up
 GET_UP_ISSUE_NUMBER = 1   
 GET_UP_MESSAGE_TEMPLATE = (
-    "这次工作时间是--{get_up_time}.\r\n\r\n www \r\n\r\n 今天的总时长:\r\n {number_toady * 25} "
+    "这次工作时间是--{get_up_time}.\r\n\r\n www \r\n\r\n 今天的总时长:\r\n {number_toady}  "
 )
 #SENTENCE_API = "https://v1.jinrishici.com/all"
 #DEFAULT_SENTENCE = "赏花归去马如飞\r\n去马如飞酒力微\r\n酒力微醒时已暮\r\n醒时已暮赏花归\r\n"
@@ -55,7 +55,7 @@ def make_get_up_message(number_toady):
     # 3 - 7 means early for me
    # is_get_up_early = 6 <= now.hour <= 18    
     get_up_time = now.to_datetime_string()
-    body = GET_UP_MESSAGE_TEMPLATE.format(get_up_time=get_up_time, number_toady=number_toady) #, sentence=sentence)
+    body = GET_UP_MESSAGE_TEMPLATE.format(get_up_time=get_up_time, number_toady=number_toady*25) #, sentence=sentence)
     return body #, is_get_up_early
 
 
