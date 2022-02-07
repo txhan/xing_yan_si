@@ -1,0 +1,44 @@
+# 此工作流使用未经 GitHub 认证的操作。
+# 它们由第三方提供，并受
+# 单独的服务条款、隐私政策和支持
+# 文档管理。
+
+name: Weekly Team Sync
+on:
+  schedule:
+    - cron: 00 14 * * *
+
+jobs:
+  create_issue:
+    name: Create team sync issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Today's date
+        run: echo "TODAY=$(date '+%Y-%m-%d')" >> $GITHUB_ENV
+        
+      - name: Issue Bot Action
+        uses: imjohnbo/issue-bot@v3.3.4
+        with:
+          assignees: "txhan"
+          labels: "daily KPI, phd-job, night-check"
+          title: ${{ env.TODAY }} daily check
+          body: |-
+            :wave: Good job, {{#each assignees}}@{{this}}{{#unless @last}}, {{/unless}}{{/each}}! And have a good night！
+            ## Standup for ${{ env.TODAY }}
+            ### Check
+
+            - 1. 时间大于5h [ ]
+            - 2. 三大事项 [ ] 
+            - 3. 三个生活目标 [ ]
+            - 4. 十个仪式感小动作 [ ]
+
+            ### Today Points
+           
+             
+          pinned: false
+          close-previous: true
+          linked-comments: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
